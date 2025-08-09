@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Icon Solutions - Cleaner SVG Implementation</title>
+
+    <!-- Tabler Core CSS (already in your project) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css"
+    />
+
+    <!-- Solution 1: Tabler Icons CSS (Recommended) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    />
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .solution-section {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        border: 1px solid #e6e7e8;
+        border-radius: 8px;
+      }
+
+      .before-after {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin: 1rem 0;
+      }
+
+      .code-block {
+        background: #f8f9fa;
+        padding: 1rem;
+        border-radius: 4px;
+        font-family: "Monaco", "Consolas", monospace;
+        font-size: 0.9rem;
+        white-space: pre-wrap;
+        border-left: 4px solid #206bc4;
+      }
+
+      .before {
+        border-left-color: #d63384;
+      }
+
+      .after {
+        border-left-color: #20c997;
+      }
+
+      /* Solution 2: Custom Icon System */
+      .icon-custom {
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+        vertical-align: middle;
+      }
+
+      .icon-custom[data-icon="close"]::before {
+        content: "✕";
+      }
+
+      .icon-custom[data-icon="eye"]::before {
+        content: "👁";
+      }
+
+      .icon-custom[data-icon="google"]::before {
+        content: "G";
+        background: #4285f4;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        font-weight: bold;
+      }
+
+      /* Solution 3: CSS-only icons */
+      .icon-css {
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        position: relative;
+      }
+
+      .icon-css.close::before,
+      .icon-css.close::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 2px;
+        background: currentColor;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      .icon-css.close::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Icon Solutions: Making Your HTML Cleaner</h1>
+    <p>
+      Here are several ways to simplify your SVG icon usage and make your HTML
+      more structured and minimal.
+    </p>
+
+    <!-- Solution 1: Tabler Icons CDN -->
+    <div class="solution-section">
+      <h2>🏆 Solution 1: Tabler Icons CDN (Recommended)</h2>
+      <p>
+        <strong>Best for:</strong> Your current setup since you're already using
+        Tabler framework.
+      </p>
+
+      <h3>Before (Complex SVG):</h3>
+      <div class="code-block before">
+        &lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler
+        icons-tabler-outline icon-tabler-x"&gt; &lt;path d="M18 6l-12
+        12"&gt;&lt;/path&gt; &lt;path d="M6 6l12 12"&gt;&lt;/path&gt;
+        &lt;/svg&gt;
+      </div>
+
+      <h3>After (Clean Tabler Icon):</h3>
+      <div class="code-block after">&lt;i class="ti ti-x"&gt;&lt;/i&gt;</div>
+
+      <h3>Live Examples:</h3>
+      <div
+        style="display: flex; gap: 1rem; align-items: center; margin: 1rem 0"
+      >
+        <span>Close icon: <i class="ti ti-x"></i></span>
+        <span>Eye icon: <i class="ti ti-eye"></i></span>
+        <span>Google: <i class="ti ti-brand-google"></i></span>
+        <span>Twitter: <i class="ti ti-brand-twitter"></i></span>
+        <span>Home: <i class="ti ti-home"></i></span>
+        <span>Settings: <i class="ti ti-settings"></i></span>
+      </div>
+
+      <h3>Setup Required:</h3>
+      <div class="code-block">
+        Add to your &lt;head&gt; section: &lt;link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+        /&gt;
+      </div>
+
+      <h3>Benefits:</h3>
+      <ul>
+        <li>✅ 95% reduction in HTML code</li>
+        <li>✅ 3000+ icons available</li>
+        <li>✅ Consistent with your Tabler theme</li>
+        <li>✅ No additional JavaScript required</li>
+        <li>✅ Easily customizable with CSS</li>
+      </ul>
+    </div>
+
+    <!-- Solution 2: Custom Icon Component System -->
+    <div class="solution-section">
+      <h2>🎨 Solution 2: Custom Icon Component System</h2>
+      <p>
+        <strong>Best for:</strong> When you want full control over icon
+        appearance and have a limited set of icons.
+      </p>
+
+      <h3>Implementation:</h3>
+      <div class="code-block">
+        /* CSS */ .icon-custom { display: inline-block; width: 1.5rem; height:
+        1.5rem; vertical-align: middle; }
+        .icon-custom[data-icon="close"]::before { content: "✕"; }
+        .icon-custom[data-icon="eye"]::before { content: "👁"; }
+      </div>
+
+      <h3>Usage:</h3>
+      <div class="code-block after">
+        &lt;span class="icon-custom" data-icon="close"&gt;&lt;/span&gt; &lt;span
+        class="icon-custom" data-icon="eye"&gt;&lt;/span&gt;
+      </div>
+
+      <h3>Live Examples:</h3>
+      <div
+        style="display: flex; gap: 1rem; align-items: center; margin: 1rem 0"
+      >
+        <span>Close: <span class="icon-custom" data-icon="close"></span></span>
+        <span>Eye: <span class="icon-custom" data-icon="eye"></span></span>
+        <span
+          >Google: <span class="icon-custom" data-icon="google"></span
+        ></span>
+      </div>
+    </div>
+
+    <!-- Solution 3: SVG Sprite System -->
+    <div class="solution-section">
+      <h2>🎯 Solution 3: SVG Sprite System</h2>
+      <p>
+        <strong>Best for:</strong> When you need custom SVG icons with full
+        control and optimization.
+      </p>
+
+      <h3>Create a sprite file (icons-sprite.svg):</h3>
+      <div class="code-block">
+        &lt;svg xmlns="http://www.w3.org/2000/svg" style="display: none;"&gt;
+        &lt;symbol id="icon-close" viewBox="0 0 24 24"&gt; &lt;path d="M18 6l-12
+        12M6 6l12 12"/&gt; &lt;/symbol&gt; &lt;symbol id="icon-eye" viewBox="0 0
+        24 24"&gt; &lt;path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/&gt;
+        &lt;path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6
+        9 -6c3.6 0 6.6 2 9 6"/&gt; &lt;/symbol&gt; &lt;/svg&gt;
+      </div>
+
+      <h3>Usage in HTML:</h3>
+      <div class="code-block after">
+        &lt;svg class="icon"&gt; &lt;use href="#icon-close"&gt;&lt;/use&gt;
+        &lt;/svg&gt;
+      </div>
+    </div>
+
+    <!-- Solution 4: CSS-Only Icons -->
+    <div class="solution-section">
+      <h2>🎪 Solution 4: CSS-Only Icons</h2>
+      <p>
+        <strong>Best for:</strong> Simple geometric icons without external
+        dependencies.
+      </p>
+
+      <h3>Implementation:</h3>
+      <div class="code-block">
+        /* CSS for close icon */ .icon-css.close::before, .icon-css.close::after
+        { content: ''; position: absolute; top: 50%; left: 50%; width: 100%;
+        height: 2px; background: currentColor; transform: translate(-50%, -50%)
+        rotate(45deg); } .icon-css.close::after { transform: translate(-50%,
+        -50%) rotate(-45deg); }
+      </div>
+
+      <h3>Usage:</h3>
+      <div class="code-block after">
+        &lt;span class="icon-css close"&gt;&lt;/span&gt;
+      </div>
+
+      <h3>Live Example:</h3>
+      <div style="margin: 1rem 0">
+        <span>Close icon: <span class="icon-css close"></span></span>
+      </div>
+    </div>
+
+    <!-- Recommendation -->
+    <div
+      class="solution-section"
+      style="background: #e7f3ff; border-color: #206bc4"
+    >
+      <h2>🏆 My Recommendation for Your Project</h2>
+      <p>Use <strong>Solution 1: Tabler Icons CDN</strong> because:</p>
+      <ul>
+        <li>✅ You're already using Tabler framework</li>
+        <li>✅ Minimal setup required (just one CSS link)</li>
+        <li>✅ Massive reduction in HTML complexity</li>
+        <li>✅ 3000+ professionally designed icons</li>
+        <li>✅ Perfect integration with your existing design</li>
+        <li>✅ Easy to maintain and update</li>
+      </ul>
+
+      <h3>Quick Start Guide:</h3>
+      <ol>
+        <li>Add the Tabler Icons CSS to your &lt;head&gt; section</li>
+        <li>
+          Replace your SVG tags with &lt;i class="ti
+          ti-[icon-name]"&gt;&lt;/i&gt;
+        </li>
+        <li>
+          Find icon names at:
+          <a href="https://tabler-icons.io/" target="_blank"
+            >https://tabler-icons.io/</a
+          >
+        </li>
+      </ol>
+
+      <h3>Common Icon Replacements:</h3>
+      <div class="code-block">
+        Close button: &lt;i class="ti ti-x"&gt;&lt;/i&gt; Eye/Show: &lt;i
+        class="ti ti-eye"&gt;&lt;/i&gt; Hide: &lt;i class="ti
+        ti-eye-off"&gt;&lt;/i&gt; Google: &lt;i class="ti
+        ti-brand-google"&gt;&lt;/i&gt; Twitter: &lt;i class="ti
+        ti-brand-twitter"&gt;&lt;/i&gt; Home: &lt;i class="ti
+        ti-home"&gt;&lt;/i&gt; Settings: &lt;i class="ti
+        ti-settings"&gt;&lt;/i&gt; Menu: &lt;i class="ti
+        ti-menu-2"&gt;&lt;/i&gt;
+      </div>
+    </div>
+
+    <script>
+      // Example: Dynamic icon changing (for password toggle)
+      document.addEventListener("DOMContentLoaded", function () {
+        // This would replace your existing password toggle script
+        const togglePassword = document.querySelector(
+          '[data-bs-toggle="tooltip"]'
+        );
+        const passwordInput = document.querySelector('input[type="password"]');
+
+        if (togglePassword && passwordInput) {
+          togglePassword.addEventListener("click", function (e) {
+            e.preventDefault();
+            const type =
+              passwordInput.getAttribute("type") === "password"
+                ? "text"
+                : "password";
+            passwordInput.setAttribute("type", type);
+
+            // Toggle icon classes instead of SVG manipulation
+            const icon = this.querySelector("i");
+            if (icon) {
+              icon.classList.toggle("ti-eye");
+              icon.classList.toggle("ti-eye-off");
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login | Tabler Template</title>
+    <!-- Tabler CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css"
+    />
+  </head>
+  <body class="d-flex flex-column">
+    <div class="page page-center">
+      <div class="container container-tight py-4">
+        <div class="text-center mb-4">
+          <a href="." class="navbar-brand navbar-brand-autodark">
+            <img
+              src="https://tabler.io/static/logo.svg"
+              width="110"
+              height="32"
+              alt="Tabler"
+              class="navbar-brand-image"
+            />
+          </a>
+        </div>
+        <div class="card card-md">
+          <div class="card-body">
+            <h2 class="h2 text-center mb-4">Login to your account</h2>
+            <form action="./" method="get" autocomplete="off" novalidate>
+              <div class="mb-3">
+                <label class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="your@email.com"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Your password"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="mb-2">
+                <label class="form-check">
+                  <input type="checkbox" class="form-check-input" />
+                  <span class="form-check-label">Remember me</span>
+                </label>
+              </div>
+              <div class="form-footer">
+                <button type="submit" class="btn btn-primary w-100">
+                  Sign in
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="text-center text-muted mt-3">
+          Don't have an account yet? <a href="./sign-up.html">Sign up</a>
+        </div>
+      </div>
+    </div>
+    <!-- Tabler JS (Optional, only needed for interactive features) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+  </body>
+</html>
